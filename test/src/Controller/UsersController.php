@@ -22,10 +22,18 @@ class UsersController extends AbstractController
     public function index(UsersRepository $usersRepository): Response
     {
         return $this->render('users/index.html.twig', [
+            'users' => $usersRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/lista_rand", name="users_lista")
+     */
+    public function lista_rand(UsersRepository $usersRepository): Response
+    {
+        return $this->render('users/index.html.twig', [
             'users' => $usersRepository->getListRand(),
         ]);
     }
-
     /**
      * @Route("/new", name="users_new", methods={"GET","POST"})
      */
