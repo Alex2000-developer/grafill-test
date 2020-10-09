@@ -28,4 +28,15 @@ class MainController extends AbstractController
             'name' => $name,
         ]);
     }
+    /**
+     * @Route("/stampa_ora/", name="main")
+     */
+    public function stampa_ora(){
+        
+        return $this->render('main/stampa_ora_twig.html.twig', [
+            'controller_name' => 'MainController',
+            'name' => 'Ciao',
+        ]);
+    }
+    
 }
