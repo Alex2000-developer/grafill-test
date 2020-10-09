@@ -47,4 +47,11 @@ class UsersRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getListRand(){
+       return  $this->createQueryBuilder('u')->addSelect('RAND() as HIDDEN rand')->orderBy('rand')->getQuery()
+       ->getResult();
+        // ->addSelect('RAND() as HIDDEN rand')
+        // ->orderBy('rand');
+    }
+
 }
