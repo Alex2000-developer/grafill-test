@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
-
+use App\Service\CasualNumberGenerator;
 
 class MainController extends AbstractController
 {
@@ -19,7 +19,7 @@ class MainController extends AbstractController
         ]);
     }
     /**
-     * @Route("/prova_twig/{name}", name="main")
+     * @Route("/prova_twig/{name}", name="prova_twig")
      */
     public function prova_twig($name){
         
@@ -29,13 +29,22 @@ class MainController extends AbstractController
         ]);
     }
     /**
-     * @Route("/stampa_ora/", name="main")
+     * @Route("/stampa_ora/", name="stampa_ora")
      */
     public function stampa_ora(){
         
         return $this->render('main/stampa_ora_twig.html.twig', [
             'controller_name' => 'MainController',
-            'name' => 'Ciao',
+        ]);
+    }
+    /**
+     * @Route("/prova_symfony", name="prova_sympfony")
+     */
+    public function prova_symfony(CasualNumberGenerator $casual_number){
+        
+        return $this->render('main/prova_symfony_twig.html.twig', [
+            'controller_name' => 'MainController',
+            'casual_number' => $casual_number->getCasualNumber(),
         ]);
     }
     
