@@ -28,19 +28,6 @@ class CasualNumberCommand extends Command
         $message = new CasualNumberGenerator;
         $number = $message->getCasualNumber();
         $output->writeln('Numero Casuale: '.$number);
-        // $io = new SymfonyStyle($input, $output);
-        // $arg1 = $input->getArgument('arg1');
-
-        // if ($arg1) {
-        //     $io->note(sprintf('You passed an argument: %s', $arg1));
-        // }
-
-        // if ($input->getOption('option1')) {
-        //     // ...
-        // }
-
-        // $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
-
         return 0;
     }
 }

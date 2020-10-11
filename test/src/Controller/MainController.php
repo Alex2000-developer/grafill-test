@@ -19,33 +19,47 @@ class MainController extends AbstractController
         ]);
     }
     /**
-     * @Route("/prova_twig/{name}", name="prova_twig")
+     * @Route("/prova-twig/{name}", name="prova_twig")
      */
-    public function prova_twig($name){
+    public function provaTwig($name){
         
-        return $this->render('main/prova_twig.html.twig', [
+        return $this->render('main/prova-twig.html.twig', [
             'controller_name' => 'MainController',
             'name' => $name,
         ]);
     }
     /**
-     * @Route("/stampa_ora/", name="stampa_ora")
+     * @Route("/stampa-ora/", name="stampa_ora")
      */
-    public function stampa_ora(){
+    public function stampaOra(){
         
-        return $this->render('main/stampa_ora_twig.html.twig', [
+        return $this->render('main/stampa-ora.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
     /**
-     * @Route("/prova_symfony", name="prova_sympfony")
+     * @Route("/prova-symfony", name="prova_sympfony")
      */
-    public function prova_symfony(CasualNumberGenerator $casual_number){
+    public function provaSymfony(CasualNumberGenerator $casual_number){
         
-        return $this->render('main/prova_symfony_twig.html.twig', [
+        return $this->render('main/prova-symfony.html.twig', [
             'controller_name' => 'MainController',
             'casual_number' => $casual_number->getCasualNumber(),
         ]);
+    }
+    /**
+     * @Route("/crea-utenti", name="crea-utenti")
+     */
+    public function creaUtenti(CasualNumberGenerator $casual_number){
+        
+        return $this->redirect('/users/crea-utenti');
+    }
+    /**
+     * @Route("/prova-doctrine", name="crea-utenti")
+     */
+    public function provaDoctrine(CasualNumberGenerator $casual_number){
+        
+        return $this->redirect('/users/prova-doctrine');
     }
     
 }
