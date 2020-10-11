@@ -48,10 +48,15 @@ class UsersRepository extends ServiceEntityRepository
     }
     */
     public function getListRand(){
-       return  $this->createQueryBuilder('u')->addSelect('RAND() as HIDDEN rand')->orderBy('rand')->getQuery()
-       ->getResult();
-        // ->addSelect('RAND() as HIDDEN rand')
-        // ->orderBy('rand');
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = '
+            select * 
+            from users
+            order by RAND();
+        ';
+        $query_by_execute = $conn->prepare($sql);
+        $query_by_execute->execute();
+        return $query_by_execute->fetchAll();
     }
 
 }

@@ -14,14 +14,14 @@ class DataOraExtension extends AbstractExtension
             // If your filter generates SAFE HTML, you should add a third
             // parameter: ['is_safe' => ['html']]
             // Reference: https://twig.symfony.com/doc/2.x/advanced.html#automatic-escaping
-            new TwigFilter('data', [$this, 'output_datetime']),
+            new TwigFilter('stampaOra', [$this, 'output_datetime']),
         ];
     }
 
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('data', [$this, 'output_datetime']),
+            new TwigFunction('stampaOra', [$this, 'output_datetime']),
         ];
     }
 

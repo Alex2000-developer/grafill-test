@@ -26,9 +26,9 @@ class UsersController extends AbstractController
         ]);
     }
     /**
-     * @Route("/lista_rand", name="users_lista")
+     * @Route("/prova-doctrine", name="users_doctrine")
      */
-    public function lista_rand(UsersRepository $usersRepository): Response
+    public function provaDoctrine(UsersRepository $usersRepository): Response
     {
         return $this->render('users/index.html.twig', [
             'users' => $usersRepository->getListRand(),
@@ -60,9 +60,9 @@ class UsersController extends AbstractController
         ]);
     }
     /**
-     * @Route("/crea_utenti", name="crea_utenti", methods={"GET","POST"})
+     * @Route("/crea-utenti", name="crea_utenti", methods={"GET","POST"})
      */
-    public function crea_utenti(Request $request, UsersRepository $usersRepository  , GroupsRepository $groupsRepository): Response
+    public function creaUtenti(Request $request, UsersRepository $usersRepository  , GroupsRepository $groupsRepository): Response
     {
         //Extract entity object
         $groups = $groupsRepository->findBy(['id' => 1]);
@@ -81,7 +81,7 @@ class UsersController extends AbstractController
         }
         $entityManager->flush();
         $message = 'OK'.' | Utenti salvati: '.$users_saved;
-        return $this->render('users/crea_utenti.html.twig', [
+        return $this->render('users/crea-utenti.html.twig', [
             'user' => $user_entity,
             'message' => $message,
         ]);
