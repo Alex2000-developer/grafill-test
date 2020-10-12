@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\CasualNumberGenerator;
 
 /**
  * @Route("/users")
@@ -68,11 +69,14 @@ class UsersController extends AbstractController
         $groups = $groupsRepository->findBy(['id' => 1]);
         $users_saved = 0;
         $message = '';
+        $casual_number_object = new CasualNumberGenerator;
+        
         for($i = 1; $i<=3; $i++){
+            $casual_number_generated = $casual_number_object->getCasualNumber();
             $user_entity = new Users();
-            $user_entity->setName('user_'.$i.'_name');
-            $user_entity->setSurname('user_'.$i.'_surname');
-            $user_entity->setEmail('user_'.$i.'_surname@gmail.com');
+            $user_entity->setName('user_name'.$casual_number_generated);
+            $user_entity->setSurname('user_surname'.$casual_number_generated);
+            $user_entity->setEmail('user_'.$casual_number_generated.'@gmail.com');
             $user_entity->setUserGroup($groups[0]);
             // dump($user_entity);die();
             $entityManager = $this->getDoctrine()->getManager();
